@@ -1,11 +1,9 @@
 import {expect} from "chai";
 import {describe, it} from "mocha";
-import MarkdownIt from "markdown-it";
 import PikchrPlugin from "../src/markdown-it-plugin-pikchr";
 import {PikchrResultType} from "pikchr";
+const MarkdownIt = require("markdown-it");
 
-
-// @ts-ignore
 
 const ArrowArrowSVG = `<svg width="152" height="12" xmlns='http://www.w3.org/2000/svg' viewBox="0 0 152.64 12.96">
 <polygon points="74,6 62,10 62,2" style="fill:rgb(0,0,0)"/>
@@ -42,7 +40,7 @@ Some *Markdown* text before the code fences.
 \`\`\`pikchr
 arrow; arrow
 \`\`\``);
-        const expected = `<pre style="visibility: hidden"></pre>`+ArrowArrowDIV;
+        const expected = `<pre style="visibility: hidden"></pre>` + ArrowArrowDIV;
         // let result2 = result.slice(result.length-expected.length);
         expect(result.slice(result.indexOf(xmlns))).to.equal(expected.slice(expected.indexOf(xmlns)));
     });
@@ -51,9 +49,9 @@ arrow; arrow
         const result = mdi.render(`\`\`\`pikchr-darkmode
 ${VeryBasicExample_Src}
 \`\`\``);
-        let dark =( VeryBasicExample_Output+'</div>').replace(/0,0,0/g, '255,255,255');
+        let dark = (VeryBasicExample_Output + '</div>').replace(/0,0,0/g, '255,255,255');
 
-        var resultpart2 = result.slice(result.length-dark.length);
+        var resultpart2 = result.slice(result.length - dark.length);
         resultpart2 = resultpart2.slice(resultpart2.indexOf('xmlns=\'http://www.w3.org/2000/svg\''));
         dark = dark.slice(dark.indexOf('xmlns=\'http://www.w3.org/2000/svg\''))
         expect(resultpart2).to.equal(dark);
@@ -67,7 +65,7 @@ Some *Markdown* text before the code fences.
 \`\`\``);
         const empty = `<h1>Markdown header</h1>
 <p>Some <em>Markdown</em> text before the code fences.</p>
-<pre style="visibility: hidden"></pre><div style="width: 100px;"><!-- empty pikchr diagram -->
+<div style="width: 100px;"><!-- empty pikchr diagram -->
 </div>`;
         expect(result).to.equal(empty);
     });
@@ -102,13 +100,13 @@ Some *Markdown* text before the code fences.
 
 describe("Testing Options", function () {
     const mdi = new MarkdownIt();
-    mdi.use(PikchrPlugin, {render_f:renderf});
+    mdi.use(PikchrPlugin, {render_f: renderf});
 
-    function renderf(result: PikchrResultType):string {
+    function renderf(result: PikchrResultType): string {
         expect(result.width).to.equal(152);
         expect(result.height).to.equal(12);
         expect(result.output.slice(result.output.indexOf(xmlns))).to.equal(
-                                        ArrowArrowSVG.slice(ArrowArrowSVG.indexOf(xmlns)));
+            ArrowArrowSVG.slice(ArrowArrowSVG.indexOf(xmlns)));
         return "nada";
     }
 

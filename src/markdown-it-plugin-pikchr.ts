@@ -1,14 +1,15 @@
 import type MarkdownIt from "markdown-it";
-// @ts-ignore
-import Token from "markdown-it/lib/token";
 import {pikchrex, PikchrResultType} from "pikchr";
+import Token from "markdown-it/lib/token";
+import {Options} from "markdown-it/lib";
+import Renderer from "markdown-it/lib/renderer";
 
 
 function default_render(result: PikchrResultType): string {
     const output = result.output.replace('svg',
         `svg width="${result.width}" height="${result.height}"`);
     // return `<pre style="visibility: hidden"></pre><div style="width: 100px;">${output}</div>`;
-    return `<pre style="visibility: hidden"></pre><div style="width: 100px;">${output}</div>`;
+    return `<div style="width: 100px;">${output}</div>`;
 }
 
 
@@ -18,7 +19,7 @@ interface PikchrPluginOptions {
 
 const PikchrPlugin = (md: MarkdownIt, opts?: PikchrPluginOptions) => {
     const tempFence = md.renderer.rules.fence!.bind(md.renderer.rules)!;
-    md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+    md.renderer.rules.fence = (tokens: Token[], idx: number, options: Options, env: any, slf: Renderer) => {
         const token = tokens[idx];
         const chunks = (token.info || ``).match(/^(\S+)(\s+(.+))?/);
         if (!chunks || !chunks.length) {
@@ -32,7 +33,7 @@ const PikchrPlugin = (md: MarkdownIt, opts?: PikchrPluginOptions) => {
         const pikchr = lang === "pikchr";
 
         if (pikchr || dark_mode) {
-            const render_f = opts?(opts.render_f || default_render): default_render;
+            const render_f = opts ? (opts.render_f || default_render) : default_render;
             const result = pikchrex(code, {dark_mode});
             return render_f(result);
         }

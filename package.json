@@ -21,10 +21,7 @@
     "pic",
     "diagram"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/christianvoigt/argdown/tree/master/packages/argdown-markdown-it-plugin"
-  },
+  "repository": "https://github.com/tenuki/markdown-it-pikchr",
   "author": {
     "name": "david weil",
     "email": "tenuki@gmail.com"
@@ -32,10 +29,11 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
+    "@types/markdown-it": "^12.0.0",
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
-    "pikchr": "0.0.4",
+    "pikchr": "0.0.5",
     "rimraf": "^3.0.2",
     "typescript": "^4.1.3"
   }
