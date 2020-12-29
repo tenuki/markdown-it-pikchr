@@ -5,14 +5,14 @@
 Use `markdown-it-pikchr` as a regular plugin.
 
 ```sh
-npm install markdown-it markdown-it-plugin-pikchr
+npm install markdown-it markdown-it-pikchr
 ```
 
 Configure the markdown-it instance:
 
 ```javascript
 // node.js, "classic" way:
-var pikchr = require('markdown-it-plugin-pikchr');
+var pikchr = require('markdown-it-pikchr');
 var MarkdownIt = require('markdown-it'),
     md = new MarkdownIt();
     md.use(pikchr);
