@@ -1,0 +1,42 @@
+{
+  "name": "markdown-it-pikchr",
+  "version": "0.0.1",
+  "description": "Allow pikchr diagrams in markdown fences",
+  "main": "dist/markdown-it-plugin-pikchr.js",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "build": "npm run clean && npm run build:src && npm run build:esm",
+    "build:esm": "tsc -m es6 --target ES2018 --outDir dist-esm",
+    "build:src": "tsc",
+    "docs:build": "node ./node_modules/typedoc/bin/typedoc",
+    "test": "mocha -r ts-node/register --full-trace --bail --require source-map-support/register ./test/**/*.spec.ts",
+    "coverage": "nyc mocha -r ts-node/register --full-trace --bail --require source-map-support/register ./test/**/*.spec.ts",
+    "report": "nyc report",
+    "clean": "rimraf \"dist/*\" && rimraf \"dist-esm/*\""
+  },
+  "keywords": [
+    "markdown-it-plugin",
+    "markdown-it",
+    "pikchr",
+    "pic",
+    "diagram"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christianvoigt/argdown/tree/master/packages/argdown-markdown-it-plugin"
+  },
+  "author": {
+    "name": "david weil",
+    "email": "tenuki@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "pikchr": "0.0.4",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.3"
+  }
+}
