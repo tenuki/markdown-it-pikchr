@@ -23,6 +23,7 @@ var result = md.render(aMarkdownDocument);
 ```
 
 Document including:
+
     ```pikchr
     arrow right 200% "Markdown" "Source"
     box rad 10px "Markdown" "Formatter" "(markdown.c)" fit
