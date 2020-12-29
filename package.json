@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-pikchr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allow pikchr diagrams in markdown fences",
   "main": "dist/markdown-it-plugin-pikchr.js",
   "scripts": {
