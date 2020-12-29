@@ -1,5 +1,8 @@
 # markdown-it-plugin-pikchr
 
+[![Actions Status](https://github.com/tenuki/markdown-it-pikchr/workflows/On%20Commit%20Build%20and%20Tests/badge.svg)](https://github.com/tenuki/markdown-it-pikchr/actions)
+[![Actions Status](https://github.com/tenuki/markdown-it-pikchr/workflows/On%20new%20release%20Build%20and%20Tests/badge.svg)](https://github.com/tenuki/markdown-it-pikchr/actions)
+
 ### How to add Pikchr support to Markdown-It
 
 Use `markdown-it-pikchr` as a regular plugin.
